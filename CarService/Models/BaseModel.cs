@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace CarService.Models
 {
-    public class Car : BaseModel
+    public abstract class BaseModel
     {
-        public string Name { get; set; }
+        public Guid Id { get; set; }
 
-        public string Number { get; set; }
     }
 }

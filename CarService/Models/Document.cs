@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace CarService.Models
 {
-    public class Document
+    public class Document : BaseModel
     {
-        public Guid Id { get; set; }
-
         public Guid CarId { get; set; }
 
         public Guid WorkerId { get; set; }
