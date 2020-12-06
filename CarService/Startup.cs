@@ -33,15 +33,15 @@ namespace CarService
         {
             services.AddMvc();
 
-            services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationContext>(opt =>
-                    opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddTransient<IRepairService, RepairService>();
             services.AddTransient<IBaseRepository<Document>, BaseRepository<Document>>();
             services.AddTransient<IBaseRepository<Car>, BaseRepository<Car>>();
             services.AddTransient<IBaseRepository<Worker>, BaseRepository<Worker>>();
 
-            services.AddControllers();
+            services.AddDbContext<ApplicationContext>(opt =>
+                    opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +62,11 @@ namespace CarService
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+
+            //// Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
+            //app.UseSwaggerUi();
         }
     }
 }
