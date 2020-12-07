@@ -44,17 +44,6 @@ namespace CarService
 
 
             services.AddSwaggerGen();
-
-            //services.AddSwaggerGen(oprions =>
-            //{
-            //    oprions.SwaggerDoc("v1",
-            //       new OpenApiInfo
-            //       {
-            //           Title = "Swagger CarService",
-            //           Description = "Swagger for CarService",
-            //           Version = "v1"
-            //       });
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,11 +66,10 @@ namespace CarService
             });
 
             app.UseSwagger();
-            app.UseSwaggerUI();
-            //app.UseSwaggerUI(options =>
-            //{
-            //    options.SwaggerEndpoint("swagger/v1/swagger.json", "Swagger CarService");
-            //});
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
         }
     }
 }

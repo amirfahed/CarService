@@ -14,6 +14,17 @@ namespace CarService.Services.Implementation
         private IBaseRepository<Car> Cars { get; set; }
         private IBaseRepository<Worker> Workers { get; set; }
 
+        public RepairService(
+            IBaseRepository<Document> documents,
+            IBaseRepository<Car> cars,
+            IBaseRepository<Worker> workers
+            )
+        {
+            Documents = documents;
+            Cars = cars;
+            Workers = workers;
+        }
+
         public void Work()
         {
             var rand = new Random();
